@@ -9,6 +9,7 @@ pipeline {
         }*/
         stage('Test') {
             steps {
+                sh 'apt-get install yarn -y'
                 sh 'yarn test'
             }
         }
