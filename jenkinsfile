@@ -11,6 +11,7 @@ pipeline {
             steps {
                 sh 'apt-get install yarn -y'
                 sh 'yarn test'
+                sh 'yarn test'
             }
         }
     }
