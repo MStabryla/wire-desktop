@@ -9,8 +9,8 @@ pipeline {
         }*/
         stage('Test') {
             steps {
-                sh 'apt-get install yarn -y'
-                sh 'ls'
+                sh 'apt-get install nodejs npm'
+                sh 'npm install --global yarn'
                 sh 'yarn -v'
                 sh 'yarn'
                 sh 'yarn test'
