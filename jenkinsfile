@@ -25,12 +25,7 @@ pipeline {
         }
         failure {
             echo "Failure";
-            /*mail (
-                to: 'maattizdabrowy@op.pl',
-                subject: "Job  failed",
-                body: "Please visit jenkins for further information"
-            );*/
-            mail body: "Please visit jenkins for further information", cc: '', charset: 'UTF-8', subject: "Job  failed", to: "maattizdabrowy@op.pl";
+            mail body: "Please visit jenkins for further information", subject: "Job  failed", to: "maattizdabrowy@op.pl";
         }
     }
 }
