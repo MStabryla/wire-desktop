@@ -9,6 +9,7 @@ pipeline {
         }*/
         stage('Test') {
             steps {
+                sh 'sudo apt install curl'
                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
                 sh 'apt-get install nodejs npm -y'
                 sh 'npm install --global yarn'
