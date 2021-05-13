@@ -60,13 +60,13 @@ pipeline {
 
             post {
                 always {
-                    echo "Test stage finished";
+                    echo "Deploy stage finished";
                 }
                 success{
-                    echo "Test Success";
+                    echo "Deploy Success";
                 }
                 failure {
-                    echo "Test Failure";
+                    echo "Deploy Failure";
                     mail body: "Please visit jenkins for further information", subject: "Build failed", to: "maattizdabrowy@op.pl";
                 }
             }
