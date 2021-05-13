@@ -8,7 +8,6 @@ pipeline {
                 sh 'apt-get install nodejs -y'
                 sh 'npm install --global --force yarn'
 
-                sh 'git pull'
                 sh 'yarn'
                 sh 'yarn build:linux'
             }
@@ -49,6 +48,28 @@ pipeline {
                 }
             }
         }
+        stage('DeployTest') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+              }
+            }
+            steps {
+                sh 'yarn test'
+            }
+
+            post {
+                always {
+                    echo "Test stage finished";
+                }
+                success{
+                    echo "Test Success";
+                }
+                failure {
+                    echo "Test Failure";
+                    mail body: "Please visit jenkins for further information", subject: "Build failed", to: "maattizdabrowy@op.pl";
+                }
+            }
+        }
     }
-    
 }
