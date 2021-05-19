@@ -55,7 +55,7 @@ pipeline {
               }
             }
             steps {
-                sh 'yarn test'
+                sh 'echo deploy'
             }
 
             post {
