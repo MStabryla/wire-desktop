@@ -49,13 +49,17 @@ pipeline {
             }
         }
         stage('DeployTest') {
-            when {
+            /*when {
               expression {
                 currentBuild.result == null || currentBuild.result == 'SUCCESS' 
               }
-            }
+            }*/
             steps {
                 sh 'echo deploy'
+                sh 'docker pull morteniusz/devops'
+                sh 'docker docker run --name production --rm --detach -i morteniusz/devops'
+                sh 'docker cp dist/linux-unpacked/. production:/wire-desktop'
+                sh 'docker exec -it production /wire-desktop/wire-desktop'
             }
 
             post {
